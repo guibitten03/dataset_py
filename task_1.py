@@ -1,31 +1,42 @@
+from unicodedata import numeric
+from numpy import number
 import pandas as pd
 
 
-def dataset_initial() :
-    my_data_set = {
-        'studants' : ['Guilherme', 'Afonso', 'Maria'],
-        'id' : [1,2,3]
-    }
+def db_GetUsers ():
+    try:
+        path = "ml-100k/u.user"
 
-    first_test = pd.DataFrame(my_data_set)
+        user_database = pd.read_csv(path, delimiter="|")
 
-    print(first_test)
+        number_users = len(user_database)
+
+        print("Numbers of users: ", number_users)
+    except:
+        print("Could not open the file.")
 
 
-def series() :
-    column = [12,13,14]
+def db_GetItems () :
+    try:
+        path = "ml-100k/u.item"
 
-    column_data = pd.Series(column) # Generally, the firts [0] item serie is a label
-    column_label_data = pd.Series(column_data, index=["x","y","z"]) # Define labels 
-
-    print(column_data)
-    print(column_label_data)
-
+        # user_database = pd.read_csv(path, delimiter="|")
+    except:
+        print("Could not open the file.")
+        
 
 def main():
-    dataset_initial()
-    series()
+    print("1: Num of users \n 2: Num of items\n 3: Sparcity of datasets")
+    input_option = int(input())
+
+    if (input_option == 1) :
+        db_GetUsers()
+    elif (input_option == 2) :
+        db_GetItems()
+    #elif (input_option == 3) :
+        #db_GetSparcity()
 
 
 if __name__ == '__main__':
     main()
+
