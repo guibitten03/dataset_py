@@ -2,17 +2,18 @@ import pandas as pd
 from psutil import users
 
 
+def pie_plot():
+    
+
+
 def main() :
     print("User demographic information")
+    x = int(input("1 : Graphic by age \n 2 : Graphic by gender"))
 
     try:
-        path = "ml-100k/u.user"
+        if (x == 1) :
+            pie_plot()
 
-        dataset = pd.read_csv(path, delimiter="|")
-
-        dataset = dataset[dataset.columns[1:2]]
-
-        dataset.plot(kind="bar" ,x="user", y="age")
     except:
         print("Could not open the file or use dataset.")
 

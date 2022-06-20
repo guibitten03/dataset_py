@@ -9,7 +9,7 @@ def db_GetUsers ():
 
         user_database = pd.read_csv(path, delimiter="|")
 
-        number_users = len(user_database)
+        number_users = user_database.shape[0]
 
         print("Numbers of users: ", number_users)
     except:
@@ -20,7 +20,7 @@ def db_GetItems () :
     try:
         path = "ml-100k/u.item"
 
-        # user_database = pd.read_csv(path, delimiter="|")
+        user_database = pd.read_csv(path)
     except:
         print("Could not open the file.")
         
